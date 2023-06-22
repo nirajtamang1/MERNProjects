@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  height: 100vh;
+  background-color: green;
+}
+.list {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 50%;
+  background-color: blue;
+  text-align: center;
+}
+
+.heading {
+  border: 1px solid rgb(81, 76, 76);
+  background-color: rgb(81, 76, 76);
+}
+
+div input {
+  width: 100%;
+}
+ul li {
+  position: relative;
+  left: 0;
+  list-style-type: none;
+}
+.fa {
+  display: inline-block;
+}
+.value {
+  color: white;
+}
