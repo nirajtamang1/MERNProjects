@@ -2,3 +2,5 @@
 /MERNCRUD/backend/package-lock.json
 /MERNCRUD/frontend/node_modules
 /MERNCRUD/frontend/package-lock.json
+/Weather/node_modules
+/Weather/package-lock.json

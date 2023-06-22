@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=div.box, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #116396;
+    }
+
+    .container-fluid {
+      width: 400px;
+      margin: 60px auto;
+      padding: 10px;
+    }
+
+    .display {
+      text-align: center;
+      width: 400px;
+      color: #16a864;
+    }
+
+    .wrapper {
+      margin: 0 9rem;
+      background-color: white;
+      height: 45vh;
+      margin: 50px auto;
+      border-radius: 2px;
+    }
+
+    .wrapper h2 {
+      padding: 5px 0;
+      text-align: center;
+      background: #0548b5;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    .wrapper p {
+      margin: 20px 50px;
+      margin-right: 20px;
+      text-align: left;
+      color: #04214c;
+      font-size: 23px;
+    }
+
+    .weathericon {
+      color: yellow;
+      width: 900px;
+      height: 100px;
+    }
+  </style>
+
+  <title>Weather App</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <section class="display">
+      <div class="wrapper">
+        <div>
+          <input type="text">
+        </div>
+        <div id="weathericon">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </div>
+        <div class="info">
+          <h2 class="location">
+            <i class="fa fa-street-view" aria-hidden="true"></i> {%location%} {%country%}
+          </h2>
+          <p id="date"></p>
+          <h3 class="temp">Temperature: {%tempval%}℃</h3>
+          <h3 class="tempmin_max">Min {%tempmin%}℃ | Max {%tempmax%}℃</h3>
+        </div>
+    </section>
+  </div>
+
+  <script>
+    const currentDate = document.getElementById("date");
+    let weather = document.getElementById("weathericon");
+    const tempStatus = "{%weather%}";
+    if (tempStatus == "Clouds") {
+      weather.innerHTML = "<i class='fa-solid fa-cloud' aria-hidden='true' style='color:gray'></i>"
+    } else if (tempStatus == "Sunny") {
+      weather.innerHTML = "<i class='fa-solid fa-sun' aria-hidden='true' style='color:Yellow'></i>"
+    } else if (tempStatus == "Rainy") {
+      weather.innerHTML = "<i class='fa-solid fa-cloud-rain' aria-hidden='true' style='color:gray'></i>"
+    } else {
+      weather.innerHTML = "<i class='fa-solid fa-sun' aria-hidden='true' style='color:Yellow'></i>"
+    }
+    const getCurrentDay = () => {
+      let date = new Date();
+      const weekday = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thrusday',
+        'Friday',
+        'Saturday'
+      ]
+      const day = (weekday[date.getDay()])
+      return day;
+    }
+
+    const getCurrentTime = () => {
+      let date = new Date();
+      const months = [
+        'JAN',
+        'FEB',
+        'MAR',
+        'APR',
+        'MAY',
+        'JUN',
+        'JUL',
+        'AUG',
+        'SEP',
+        'OCT',
+        'NOV',
+        'DEC'
+      ]
+
+      const month = months[date.getMonth()];
+      const dat = date.getDate();
+      const hour = date.getHours();
+      const min = date.getMinutes();
+      let minutes = "";
+      if (min < 10) {
+        minutes = "0" + min;
+      } else {
+        minutes = min;
+      }
+      const ampm = (hour < 12) ? time = "AM" : time = "PM";
+      return `${month} ${dat} | ${hour} : ${minutes} ${ampm}`
+    }
+    currentDate.innerHTML = getCurrentDay() + " | " + getCurrentTime();
+  </script>
+</body>
+</html>
